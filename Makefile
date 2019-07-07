@@ -1,10 +1,10 @@
-CC				:= g++
+CC		:= g++
 TARGET		:= "dist/Boid\ Simulation"
 BUILDDIR	:= build
 SRCDIR		:= src
 CFLAGS		:= -std=c++11 -g
 SRCEXT		:= cpp
-SOURCES		:= $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+SOURCES 	:= $(wildcard $(SRCDIR)/*.$(SRCEXT))
 OBJECTS		:= $(patsubst $(SRCDIR)/%, $(BUILDDIR)/%, $(SOURCES:.$(SRCEXT)=.o))
 LIB 			:= -lSDL2
 
