@@ -3,7 +3,7 @@
 
 ## Getting Started / Installation
 - Ensure [SDL2](https://www.libsdl.org/download-2.0.php) is installed
-- Type `make` to create executable
+- Run `make` to create the executable
 - Run the executable
 
 ## How to use
