@@ -1,5 +1,7 @@
 # Other
 .DS_Store
+build
+dist
 
 # Prerequisites
 *.d

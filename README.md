@@ -11,7 +11,7 @@ Click and hold to create boids
 Press Enter/Return to clear all boids
 
 ## Screenshot
-![GitHub Logo](demo.gif)
+![GitHub Logo](images/demo.gif)
 
 
 ## License

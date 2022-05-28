@@ -1,11 +1,12 @@
-CXX      := g++
-CFLAGS   := -g -Wall -std=c++17 -Xpreprocessor -fopenmp -O2
-TARGET   := boids
-BUILDDIR := build
-LIB      := -lSDL2 -lSDL2_gfx -lomp
+CXX       := g++
+CFLAGS    := -g -Wall -std=c++17 -Xpreprocessor -fopenmp -O2
+TARGET    := boids
+BUILDDIR  := build
+TARGETDIR := dist
+LIB       := -lSDL2 -lSDL2_gfx -lomp
 
-SOURCES  := $(wildcard ./*.cpp)
-OBJECTS  := $(patsubst ./%, $(BUILDDIR)/%, $(SOURCES:.cpp=.o))
+SOURCES  := $(wildcard src/*.cpp)
+OBJECTS  := $(patsubst src/%, $(BUILDDIR)/%, $(SOURCES:.cpp=.o))
 
 ifeq ($(OS), Windows_NT)
 	CFLAGS += -mconsole
@@ -13,18 +14,19 @@ ifeq ($(OS), Windows_NT)
 endif
 
 
-$(BUILDDIR)/%.o : %.cpp
+$(BUILDDIR)/%.o : src/%.cpp
 	@mkdir -p $(BUILDDIR)
 	@$(CXX) $(CFLAGS) -c -o $@ $^
 	
-$(TARGET) : $(OBJECTS)
+$(TARGETDIR)/$(TARGET) : $(OBJECTS)
+	@mkdir -p $(TARGETDIR)
 	@$(CXX) $(CFLAGS) -o $@ $^ $(LIB) 
 
 PHONY: r
 r:
-	@./$(TARGET)
+	@./$(TARGETDIR)/$(TARGET)
 
 PHONY: clean
 clean:
 	@rm -rf $(BUILDDIR)
-	@rm -rf $(TARGET)
+	@rm -rf $(TARGETDIR)
